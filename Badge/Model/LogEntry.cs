@@ -68,7 +68,11 @@ namespace Badge.Model
             using (BadgeDataContext db = new BadgeDataContext(BadgeDataContext.ConnectionString))
             {
                 // last = db.Entries.Last();
+                foreach (var entry in db.Entries) {
+                    last = entry;
+                         
 
+                }
             }
 
             if (last == null)

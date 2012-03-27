@@ -32,6 +32,7 @@ namespace Badge
             {
                 LogEntry entries = new LogEntry
                 {
+                    Id = db.Entries.Count() + 1,
                     EntryTypeEnum = LogEntry.GetLastType() == EntryType.In ? EntryType.Out : EntryType.In,
                     Time = DateTime.Now,
                 };

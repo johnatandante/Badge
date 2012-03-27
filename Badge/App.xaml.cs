@@ -68,8 +68,9 @@ namespace Badge
             {
                 if (!db.DatabaseExists()) {
                     db.CreateDatabase();
-
+                    db.SubmitChanges();
                 }
+                                
             }
 
         }
