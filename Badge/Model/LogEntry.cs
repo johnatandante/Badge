@@ -55,7 +55,6 @@ namespace Badge.Model
             using (BadgeDataContext db = new BadgeDataContext(BadgeDataContext.ConnectionString))
             {
                 item = db.Entries.FirstOrDefault(entry => entry.Id == id);
-
             }
 
             return item;
@@ -70,8 +69,6 @@ namespace Badge.Model
                 // last = db.Entries.Last();
                 foreach (var entry in db.Entries) {
                     last = entry;
-                         
-
                 }
             }
 

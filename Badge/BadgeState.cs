@@ -1,28 +1,29 @@
-﻿using System;
-using System.Net;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Documents;
-using System.Windows.Ink;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Animation;
-using System.Windows.Shapes;
+﻿using System.Linq;
 using System.Collections.Generic;
 using Badge.Model;
+using System.Collections.ObjectModel;
+using Proattiva.Utils.Phone;
 
 namespace Badge
 {
-    public class BadgeState
+    public class BadgeState : PropertyChangedBaseClass
     {
-        public static BadgeState Current = null;
+        private static BadgeState istance;
+        public static BadgeState Current {
+            get{
+                if(istance == null)
+                    istance = new BadgeState();
 
-        public List<LogEntry> Entries = new List<LogEntry>();
-        public List<ReportLog> ReportLogs = new List<ReportLog>();
+                return istance;
+            }
+        }
+
+        public ICollection<LogEntry> Entries = new ObservableCollection<LogEntry>();
+        public ICollection<ReportLog> ReportLogs = new ObservableCollection<ReportLog>();
 
         public BadgeState()
         {
-            Current = this;
+            LoadState();
         }
 
         public void LoadState(){
@@ -30,6 +31,12 @@ namespace Badge
             Entries = LogEntry.ReadAll();
             ReportLogs = ReportLog.ReadAll();
 
+        }
+
+        public ReportLog LastLogItem {
+            get {
+                return ReportLogs.Last();
+            }
         }
 
 

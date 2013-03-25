@@ -3,34 +3,60 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
-    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"    
+    xmlns:controls="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:itemview="clr-namespace:Badge.ViewItem"
     mc:Ignorable="d" d:DesignWidth="480" d:DesignHeight="768"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
     SupportedOrientations="Portrait" Orientation="Portrait"
-    shell:SystemTray.IsVisible="True">
+    shell:SystemTray.IsVisible="True" DataContext="{Binding BadgeState}" Loaded="PhoneApplicationPage_Loaded">
 
     <!--LayoutRoot is the root grid where all page content is placed-->
-    <Grid x:Name="LayoutRoot" Background="Transparent">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
+    <!--LayoutRoot contains the root grid where all other page content is placed-->
+    <Grid x:Name="LayoutRoot">
+        <controls:Panorama Title="Trace, work, report">
 
-        <!--TitlePanel contains the name of the application and page title-->
-        <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,17,0,28">
-            <TextBlock x:Name="PageTitle" Text="Badge" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
-        </StackPanel>
+            <!--Panorama item one-->
+            <controls:PanoramaItem Header="Trace" Width="Auto">
+                <StackPanel Width="Auto">
+                    <TextBlock x:Name="TimestampText" Text="{Binding DateTime.Now}" FontSize="56" MinHeight="56" />
+                    <Button x:Name="LogEntryButton" Content="Trace!" Tap="LogEntryButton_Tap" />
+                </StackPanel>
+            </controls:PanoramaItem>
 
-        <!--ContentPanel - place additional content here-->
-        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
-            <Button Content="Go to app!" Margin="63,0,60,18" Name="button1" Height="70" VerticalAlignment="Bottom" Click="button1_Click" />
-        </Grid>
+            <!--Panorama item two-->
+            <controls:PanoramaItem Header="Work">
+                <StackPanel Width="Auto">
+                    <ListBox x:Name="LogList" >
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <itemview:LogItemViewWork />
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </StackPanel>
+            </controls:PanoramaItem>
+
+            <!--Panorama item three-->
+            <controls:PanoramaItem Header="Report">
+                <ListBox x:Name="ReportList">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <itemview:LogItemViewReport />
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </controls:PanoramaItem>
+
+        </controls:Panorama>
     </Grid>
- 
+
+    <!--Panorama-based applications should not show an ApplicationBar-->
+
     <!--Sample code showing usage of ApplicationBar-->
     <!--<phone:PhoneApplicationPage.ApplicationBar>
         <shell:ApplicationBar IsVisible="True" IsMenuEnabled="True">

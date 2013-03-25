@@ -75,6 +75,12 @@
     <Compile Include="Model\ReportLog.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="BadgeState.cs" />
+    <Compile Include="ViewItem\LogItemViewReport.xaml.cs">
+      <DependentUpon>LogItemViewReport.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewItem\LogItemViewWork.xaml.cs">
+      <DependentUpon>LogItemViewWork.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -86,6 +92,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="MainPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ViewItem\LogItemViewReport.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ViewItem\LogItemViewWork.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -104,7 +118,14 @@
     <Content Include="SplashScreenImage.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="ViewItem\" />
+    <ProjectReference Include="..\..\PaintItAll\Microsoft.Phone.Controls.Toolkit\Microsoft.Phone.Controls.Toolkit.csproj">
+      <Project>{0754458A-7AFC-463A-B27D-2F6980522119}</Project>
+      <Name>Microsoft.Phone.Controls.Toolkit</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\PaintItAll\Proattiva.Utils.Phone\Proattiva.Utils.Phone.csproj">
+      <Project>{41F4D7E6-76E4-489E-9C69-1A31A9CA21BF}</Project>
+      <Name>Proattiva.Utils.Phone</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.$(TargetFrameworkProfile).Overrides.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.CSharp.targets" />

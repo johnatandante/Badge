@@ -2,10 +2,11 @@
 using System.Linq;
 using System.Collections.Generic;
 using Badge.Database;
+using Proattiva.Utils.Phone;
 
 namespace Badge.Model
 {
-    public class ReportLog
+    public class ReportLog : PropertyChangedBaseClass 
     {
 
         public DateTime DateLog { get; set; }
@@ -16,6 +17,7 @@ namespace Badge.Model
         {
             get
             {
+
                 return DateLog.ToShortDateString();
             }
         }
@@ -24,7 +26,7 @@ namespace Badge.Model
         {
             get
             {
-                return LogIn.EntryTypeEnum.ToString();
+                return LogIn == null ? string.Empty : LogIn.EntryTypeEnum.ToString();
             }
         }
 
@@ -32,7 +34,7 @@ namespace Badge.Model
         {
             get
             {
-                return LogIn.Time.ToShortTimeString();
+                return LogIn == null ? string.Empty : LogIn.Time.ToShortTimeString();
             }
         }
 
@@ -40,7 +42,7 @@ namespace Badge.Model
         {
             get
             {
-                return LogOut.EntryTypeEnum.ToString();
+                return LogOut == null ? string.Empty : LogOut.EntryTypeEnum.ToString();
             }
         }
 
@@ -48,7 +50,7 @@ namespace Badge.Model
         {
             get
             {
-                return LogOut.Time.ToShortTimeString();
+                return LogOut == null ? string.Empty : LogOut.Time.ToShortTimeString();
             }
         }
 
@@ -66,14 +68,23 @@ namespace Badge.Model
         public static List<ReportLog> ReadAll()
         {
 
-            var list = default(List<ReportLog>);
+            var list = new List<ReportLog>();
 
             using (BadgeDataContext db = new BadgeDataContext(BadgeDataContext.ConnectionString))
             {
-                var entrylist = db.Entries.ToList();
-                if (entrylist.Count == 2)
-                {
-                    list.Add(new ReportLog(entrylist[0], entrylist[1]));
+               
+                var entrylistIn = (from entry in db.Entries
+                                 where entry.EntryTypeEnum == Enum.EntryType.In
+                                   orderby entry.Time
+                                select entry);
+                var entrylistOut = (from entry in db.Entries
+                                   where entry.EntryTypeEnum == Enum.EntryType.Out
+                                   orderby entry.Time
+                                   select entry);
+
+                foreach (var item in entrylistIn) {
+                    list.Add(new ReportLog(item,
+                                            entrylistOut.FirstOrDefault(log => log.Time > item.Time) ));
                 }
                 
             }
