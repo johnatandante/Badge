@@ -17,17 +17,42 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto" />
         </Grid.ColumnDefinitions>-->
-
+    <!--</Grid>-->
     <StackPanel Orientation="Vertical" Background="{StaticResource PhoneChromeBrush}">
-        <TextBlock Text="{Binding DateLogString}" />
-        <StackPanel Orientation="Horizontal">
-            <TextBlock Text="{Binding DescriptionIn}" />
-            <TextBlock Text="{Binding TimeIn}" />
+        <StackPanel Orientation="Vertical">
+            <TextBlock Text="1 settembre 2013" TextAlignment="Right" />
+
+            <Grid x:Name="LayoutRoot" Background="{StaticResource PhoneChromeBrush}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="56" />
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="56" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+            </Grid>
+
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="DescriptionIn" />
+                <TextBlock Text="TimeIn" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="DescriptionOut" />
+                <TextBlock Text="TimeOut" />
+            </StackPanel>
         </StackPanel>
-        <StackPanel Orientation="Horizontal">
-            <TextBlock Text="{Binding DescriptionOut}" />
-            <TextBlock Text="{Binding TimeOut}" />
+
+        <StackPanel Orientation="Vertical">
+            <TextBlock Text="{Binding DateLogString}" />
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="{Binding DescriptionIn}" />
+                <TextBlock Text="{Binding TimeIn}" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="{Binding DescriptionOut}" />
+                <TextBlock Text="{Binding TimeOut}" />
+            </StackPanel>
         </StackPanel>
     </StackPanel>
-    <!--</Grid>-->
 </UserControl>

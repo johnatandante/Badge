@@ -9,7 +9,7 @@
     Foreground="{StaticResource PhoneForegroundBrush}"
     d:DesignHeight="480" d:DesignWidth="480">
 
-    <StackPanel Background="{StaticResource PhoneChromeBrush}">
+    <StackPanel>
         <TextBlock Text="{Binding LogTypeText}" />
         <TextBlock Text="{Binding TimeText}" />
     </StackPanel>
