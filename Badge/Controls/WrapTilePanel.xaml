@@ -6,6 +6,7 @@
     xmlns:ui="clr-namespace:Badge.UiControls.ViewItem"
     xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
     mc:Ignorable="d"
+    d:DataContext="{d:DesignData /SampleData/BadgeStateViewModelSampleData.xaml}"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}">
@@ -36,7 +37,7 @@
         </Style>
     </UserControl.Resources>
 
-        <!-- set its ItemContainerStyle which is the style for each ListBoxItem -->
+    <!-- set its ItemContainerStyle which is the style for each ListBoxItem -->
     <ListBox ItemContainerStyle="{StaticResource TileListBoxItemStyle}" ItemsSource="{Binding MenuItems}" SelectionChanged="MenuItemSelectionChanged">
         <!-- set its ItemsPanel to be a WrapPanel -->
         <ListBox.ItemsPanel>
@@ -46,7 +47,7 @@
         </ListBox.ItemsPanel>
         <ListBox.ItemTemplate>
             <DataTemplate>
-                <ui:MenuTile />                
+                <ui:MenuTile />
             </DataTemplate>
         </ListBox.ItemTemplate>
         <ListBoxItem/>

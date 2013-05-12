@@ -71,6 +71,9 @@
     <Compile Include="Controller\BadgeDataService.cs" />
     <Compile Include="Controller\LogEntryDataService.cs" />
     <Compile Include="Controller\ReportLogDataService.cs" />
+    <Compile Include="Controls\MailIcon.xaml.cs">
+      <DependentUpon>MailIcon.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\WrapTilePanel.xaml.cs">
       <DependentUpon>WrapTilePanel.xaml</DependentUpon>
     </Compile>
@@ -105,6 +108,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </ApplicationDefinition>
+    <Page Include="Controls\MailIcon.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Controls\WrapTilePanel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -179,6 +186,7 @@
       <Name>Proattiva.Utils.Phone</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.$(TargetFrameworkProfile).Overrides.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

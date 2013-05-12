@@ -2,5 +2,5 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"       
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="clr-namespace:Badge.Model" 
-    Destination="Trace" ImagePath="/Toolkit.Content/ApplicationBar.Select.png" Info="2" Name="Trace" >
+    Destination="Trace" ImagePath="/Toolkit.Content/ApplicationBar.Select.png" Info="222" Name="Trace" >
 </local:MenuItem>

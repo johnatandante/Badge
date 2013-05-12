@@ -20,12 +20,11 @@ namespace Badge.Controller {
 
         public static void SetNavigationService(NavigationService navi) {
             BadgeState.Current.NavigationService = navi;
-
         }
-
 
         public static NavigationService GetNavigationService() {
             return BadgeState.Current.NavigationService;
         }
+
     }
 }

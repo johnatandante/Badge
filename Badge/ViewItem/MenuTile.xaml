@@ -5,16 +5,14 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     d:DataContext="{d:DesignData /SampleData/MenuItemViewModelSampleData.xaml}"
-    d:DesignHeight="240" d:DesignWidth="240">
-    <Grid>
-        <TextBlock Text="{Binding Name}" />
+    d:DesignHeight="240" d:DesignWidth="240"
+             d:DesignBackground="DarkBlue">
+    <Grid >
         <Image Source="{Binding ImagePath}" Stretch="UniformToFill" />
-        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-            <Path Data="M1.4901163E-05,9.8579922 L50.000015,46.316994 L100.00002,9.8579922 L100.00002,62.499992 L1.4901163E-05,62.499992 z M0,0 L100,0 L50,36.458 z" 
-                          Fill="White" Height="38.125" Stretch="Fill" 
-                          UseLayoutRounding="False" Width="61" d:IsLocked="True" />
-            <TextBlock Text="{Binding AddictionalInfo}" Margin="4,0,0,8" />
-        </StackPanel>
+        <Grid>
+            <TextBlock Text="{Binding Name}" Margin="4,0,0,8" FontSize="42" HorizontalAlignment="Left" VerticalAlignment="Top" />
+            <TextBlock Text="{Binding Info}" Margin="8,0,0,4" VerticalAlignment="Bottom" HorizontalAlignment="Center" FontSize="24" />
+        </Grid>
     </Grid>
     
 </UserControl>

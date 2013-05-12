@@ -13,5 +13,13 @@ namespace Badge {
         public Trace() {
             InitializeComponent();
         }
+
+        private void PageLoaded(object sender, RoutedEventArgs e) {
+            
+        }
+
+        private void ParseArgs(string[] args) {
+
+        }
     }
 }
