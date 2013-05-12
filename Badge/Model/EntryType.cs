@@ -1,4 +1,4 @@
-﻿namespace Badge.Enum
+﻿namespace Badge.Model
 {
     public enum EntryType
     {

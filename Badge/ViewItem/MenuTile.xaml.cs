@@ -9,8 +9,8 @@ using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 
 namespace Badge.UiControls.ViewItem {
-    public partial class LogItemViewReport : UserControl {
-        public LogItemViewReport() {
+    public partial class MenuTile : UserControl {
+        public MenuTile() {
             InitializeComponent();
         }
     }

@@ -1,58 +1,35 @@
-﻿<UserControl x:Class="Badge.ViewItem.LogItemViewWork"
+﻿<UserControl x:Class="Badge.UiControls.ViewItem.LogItemViewWork"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
+    d:DataContext="{d:DesignData /SampleData/LogItemViewWorkModelSampleData.xaml}"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
-    Foreground="{StaticResource PhoneForegroundBrush}"
-    
-    d:DesignHeight="480" d:DesignWidth="480">
-    
-    <!--<Grid x:Name="LayoutRoot" Background="{StaticResource PhoneChromeBrush}">
+    Foreground="{StaticResource PhoneForegroundBrush}">
+
+    <Grid x:Name="LayoutRoot">
         <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="12"/>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="6"/>
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto" />
-        </Grid.ColumnDefinitions>-->
-    <!--</Grid>-->
-    <StackPanel Orientation="Vertical" Background="{StaticResource PhoneChromeBrush}">
-        <StackPanel Orientation="Vertical">
-            <TextBlock Text="1 settembre 2013" TextAlignment="Right" />
+            <ColumnDefinition Width="6"/>
+            <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
 
-            <Grid x:Name="LayoutRoot" Background="{StaticResource PhoneChromeBrush}">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="56" />
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="56" />
-                    <ColumnDefinition Width="Auto" />
-                </Grid.ColumnDefinitions>
-            </Grid>
+        <TextBlock Text="{Binding DateLogString}" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" />
+        <TextBlock Text="{Binding DescriptionIn}" Grid.Column="0" Grid.Row="2" />
+        <TextBlock Text="{Binding TimeIn}" Grid.Column="2" Grid.Row="2"/>
 
-            <StackPanel Orientation="Horizontal">
-                <TextBlock Text="DescriptionIn" />
-                <TextBlock Text="TimeIn" />
-            </StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <TextBlock Text="DescriptionOut" />
-                <TextBlock Text="TimeOut" />
-            </StackPanel>
-        </StackPanel>
+        <TextBlock Text="{Binding DescriptionOut}" Grid.Column="0" Grid.Row="4"/>
+        <TextBlock Text="{Binding TimeOut}" Grid.Column="2" Grid.Row="4"/>
 
-        <StackPanel Orientation="Vertical">
-            <TextBlock Text="{Binding DateLogString}" />
-            <StackPanel Orientation="Horizontal">
-                <TextBlock Text="{Binding DescriptionIn}" />
-                <TextBlock Text="{Binding TimeIn}" />
-            </StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <TextBlock Text="{Binding DescriptionOut}" />
-                <TextBlock Text="{Binding TimeOut}" />
-            </StackPanel>
-        </StackPanel>
-    </StackPanel>
+    </Grid>
+
 </UserControl>

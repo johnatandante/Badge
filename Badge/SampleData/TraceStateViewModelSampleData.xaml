@@ -1,0 +1,11 @@
+﻿<local:TraceState xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"       
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:Badge.Context"
+    xmlns:localModel="clr-namespace:Badge.Model"
+    >
+
+    <local:TraceState.EntryTypes>
+
+    </local:TraceState.EntryTypes>
+    
+</local:TraceState>

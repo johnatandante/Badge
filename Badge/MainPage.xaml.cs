@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Linq;
 using System.Windows;
-using System.Windows.Input;
+using Badge.Context;
+using Badge.Controller;
 using Badge.Database;
-using Badge.Enum;
 using Badge.Model;
 using Microsoft.Phone.Controls;
 
@@ -18,13 +18,12 @@ namespace Badge
             
         }
 
-
-        private void LogEntryButton_Tap(object sender, System.Windows.Input.GestureEventArgs e) {
-
+        private void LogEntryButton_Tap(object sender, Microsoft.Phone.Controls.GestureEventArgs e) {
+            
             using (BadgeDataContext db = new BadgeDataContext(BadgeDataContext.ConnectionString)) {
                 LogEntry entry = new LogEntry {
                     Id = db.Entries.Count() + 1,
-                    EntryTypeEnum = LogEntry.GetLastType() == EntryType.In ? EntryType.Out : EntryType.In,
+                    EntryTypeEnum = LogEntryDataService.GetLastType() == EntryType.In ? EntryType.Out : EntryType.In,
                     Time = DateTime.Now,
                 };
 
@@ -33,7 +32,7 @@ namespace Badge
 
                 db.SubmitChanges();
 
-                MessageBox.Show(string.Format("Azione {0} alle {1}", entry.EntryTypeEnum, entry.Time.ToString()), "Info", MessageBoxButton.OK);
+                MessageBox.Show(string.Format("Event {0} logged at {1}", entry.EntryTypeEnum, entry.Time.ToString()), "Info", MessageBoxButton.OK);
             }
 
             
@@ -41,10 +40,11 @@ namespace Badge
         }
 
         private void PhoneApplicationPage_Loaded(object sender, RoutedEventArgs e) {
-            BadgeState.Current.LoadState();
+            BadgeDataService.SetNavigationService(this.NavigationService);
+            BadgeDataService.LoadLogData();
 
-            LogList.ItemsSource = BadgeState.Current.ReportLogs;
-            ReportList.ItemsSource = BadgeState.Current.Entries;
+            // LogList.ItemsSource = BadgeState.Current.ReportLogs;
+            // ReportList.ItemsSource = BadgeState.Current.Entries;
         }
 
     }

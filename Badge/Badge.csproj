@@ -67,26 +67,37 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Badge.xaml.cs">
-      <DependentUpon>Badge.xaml</DependentUpon>
-    </Compile>
+    <Compile Include="Context\TraceState.cs" />
+    <Compile Include="Controller\BadgeDataService.cs" />
+    <Compile Include="Controller\LogEntryDataService.cs" />
+    <Compile Include="Controller\ReportLogDataService.cs" />
     <Compile Include="Controls\WrapTilePanel.xaml.cs">
       <DependentUpon>WrapTilePanel.xaml</DependentUpon>
     </Compile>
     <Compile Include="Database\BadgeDataContext.cs" />
-    <Compile Include="Enum\EntryType.cs" />
+    <Compile Include="Model\EntryType.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Model\LogEntry.cs" />
+    <Compile Include="Model\MenuItem.cs" />
     <Compile Include="Model\ReportLog.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="BadgeState.cs" />
+    <Compile Include="Context\BadgeState.cs" />
+    <Compile Include="Settings.xaml.cs">
+      <DependentUpon>Settings.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Trace.xaml.cs">
+      <DependentUpon>Trace.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ViewItem\LogItemViewReport.xaml.cs">
       <DependentUpon>LogItemViewReport.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewItem\LogItemViewWork.xaml.cs">
       <DependentUpon>LogItemViewWork.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewItem\MenuTile.xaml.cs">
+      <DependentUpon>MenuTile.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -94,10 +105,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </ApplicationDefinition>
-    <Page Include="Badge.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Controls\WrapTilePanel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -106,11 +113,43 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="ViewItem\LogItemViewReport.xaml">
+    <CodeAnalysisDictionary Include="SampleData\LogItemViewReportModelSampleData.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </CodeAnalysisDictionary>
+    <ApplicationDefinition Include="ViewItem\LogItemViewReport.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <ApplicationDefinition Include="ViewItem\LogItemViewWork.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Page Include="SampleData\BadgeStateViewModelSampleData.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="ViewItem\LogItemViewWork.xaml">
+    <Page Include="SampleData\MenuItemViewModelSampleData.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="SampleData\LogItemViewWorkModelSampleData.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SampleData\TraceStateViewModelSampleData.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Settings.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Trace.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ViewItem\MenuTile.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

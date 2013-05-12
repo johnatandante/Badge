@@ -3,12 +3,12 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:ui="clr-namespace:Badge.UiControls.ViewItem"
     xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
     mc:Ignorable="d"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
-    Foreground="{StaticResource PhoneForegroundBrush}"
-    d:DesignHeight="480" d:DesignWidth="480">
+    Foreground="{StaticResource PhoneForegroundBrush}">
 
     <UserControl.Resources>
         <Style  x:Name="TileListBoxItemStyle" TargetType="ListBoxItem">
@@ -37,28 +37,22 @@
     </UserControl.Resources>
 
         <!-- set its ItemContainerStyle which is the style for each ListBoxItem -->
-    <ListBox ItemContainerStyle="{StaticResource TileListBoxItemStyle}">
+    <ListBox ItemContainerStyle="{StaticResource TileListBoxItemStyle}" ItemsSource="{Binding MenuItems}" SelectionChanged="MenuItemSelectionChanged">
         <!-- set its ItemsPanel to be a WrapPanel -->
         <ListBox.ItemsPanel>
             <ItemsPanelTemplate>
                 <toolkit:WrapPanel />
             </ItemsPanelTemplate>
         </ListBox.ItemsPanel>
-        <ListBoxItem>
-            <Grid>
-                <TextBlock Text="Messages" />
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-                    <Path Data="M1.4901163E-05,9.8579922 L50.000015,46.316994 L100.00002,9.8579922 L100.00002,62.499992 L1.4901163E-05,62.499992 z M0,0 L100,0 L50,36.458 z" 
-                          Fill="White" Height="38.125" Stretch="Fill" 
-                          UseLayoutRounding="False" Width="61" d:IsLocked="True" />
-                    <TextBlock Text="12" Margin="4,0,0,8" />
-                </StackPanel>
-            </Grid>
-        </ListBoxItem>
+        <ListBox.ItemTemplate>
+            <DataTemplate>
+                <ui:MenuTile />                
+            </DataTemplate>
+        </ListBox.ItemTemplate>
         <ListBoxItem/>
         <ListBoxItem/>
         <ListBoxItem/>
-        <toolkit:HubTile Title="Me ☺" Message="..." Notification="new messages!" Source="xxx.jpg" Margin="12,12,0,0" />
+        <!--toolkit:HubTile Title="Me ☺" Message="..." Notification="new messages!" Source="xxx.jpg" Margin="12,12,0,0" /-->
     </ListBox>
 
 </UserControl>

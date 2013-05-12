@@ -4,59 +4,66 @@ using System.Collections.Generic;
 using Badge.Database;
 using Proattiva.Utils.Phone;
 
-namespace Badge.Model
-{
-    public class ReportLog : PropertyChangedBaseClass 
-    {
+namespace Badge.Model {
+    public class ReportLog {
 
         public DateTime DateLog { get; set; }
-        public LogEntry LogIn { get; set; }
-        public LogEntry LogOut { get; set; }
+        protected LogEntry LogIn { get; set; }
+        protected LogEntry LogOut { get; set; }
 
-        public string DateLogString
-        {
-            get
-            {
-
+        public string DateLogString {
+            get {
                 return DateLog.ToShortDateString();
             }
-        }
-
-        public string DescriptionIn
-        {
-            get
-            {
-                return LogIn == null ? string.Empty : LogIn.EntryTypeEnum.ToString();
+            set {
+                DateLog = Convert.ToDateTime(value);
             }
         }
 
-        public string TimeIn
-        {
-            get
-            {
-                return LogIn == null ? string.Empty : LogIn.Time.ToShortTimeString();
+        public string DescriptionIn {
+            get {
+                return LogIn.EntryTypeEnum.ToString();
+            }
+            set {
+                LogIn.EntryTypeEnum = (EntryType)Enum.Parse(typeof(EntryType), value, false);
             }
         }
 
-        public string DescriptionOut
-        {
-            get
-            {
-                return LogOut == null ? string.Empty : LogOut.EntryTypeEnum.ToString();
+        public string TimeIn {
+            get {
+                return LogIn.Time.ToShortTimeString();
+            }
+            set {
+                LogIn.Time = Convert.ToDateTime(value);
             }
         }
 
-        public string TimeOut
-        {
-            get
-            {
-                return LogOut == null ? string.Empty : LogOut.Time.ToShortTimeString();
+        public string DescriptionOut {
+            get {
+                return LogOut.EntryTypeEnum.ToString();
+            }
+            set {
+                LogOut.EntryTypeEnum = (EntryType)Enum.Parse(typeof(EntryType), value, false);
             }
         }
 
+        public string TimeOut {
+            get {
+                return LogOut.Time.ToShortTimeString();
+            }
+            set {
+                LogOut.Time = Convert.ToDateTime(value);
+            }
+        }
 
-        public ReportLog(LogEntry logIn, LogEntry logOut)
-        {
+        public ReportLog() {
+            LogIn = new LogEntry() { EntryTypeEnum = Model.EntryType.In };
+            LogOut = new LogEntry() { EntryTypeEnum = Model.EntryType.Out };
+
+            DateLog = LogIn.Time.Date;
+        }
+
+        public ReportLog(LogEntry logIn, LogEntry logOut) {
             LogIn = logIn;
             LogOut = logOut;
 
@@ -64,33 +71,6 @@ namespace Badge.Model
 
         }
 
-
-        public static List<ReportLog> ReadAll()
-        {
-
-            var list = new List<ReportLog>();
-
-            using (BadgeDataContext db = new BadgeDataContext(BadgeDataContext.ConnectionString))
-            {
-               
-                var entrylistIn = (from entry in db.Entries
-                                 where entry.EntryTypeEnum == Enum.EntryType.In
-                                   orderby entry.Time
-                                select entry);
-                var entrylistOut = (from entry in db.Entries
-                                   where entry.EntryTypeEnum == Enum.EntryType.Out
-                                   orderby entry.Time
-                                   select entry);
-
-                foreach (var item in entrylistIn) {
-                    list.Add(new ReportLog(item,
-                                            entrylistOut.FirstOrDefault(log => log.Time > item.Time) ));
-                }
-                
-            }
-
-            return list;
-        }
     }
 
 }
