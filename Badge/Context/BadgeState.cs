@@ -19,13 +19,20 @@ namespace Badge.Context {
         }
 
         ObservableCollection<MenuItem> menuItems = new ObservableCollection<MenuItem>() {
-            { new MenuItem() { Name = "Trace",  Destination = "Trace" } },
+            { new MenuItem() { Name = "Trace", ImagePath="/Toolkit.Content/ApplicationBar.Select.png", Destination = "Trace" } },
+            { new MenuItem() { Destination="Share", ImagePath="/Toolkit.Content/ApplicationBar.Share.png", Name="Share" } },
+            { new MenuItem() { Destination="Search", ImagePath="/Toolkit.Content/ApplicationBar.Search.png", Name="Search" } },
+            { new MenuItem() { Destination="Rate", ImagePath="/Toolkit.Content/ApplicationBar.Check.png", Name="Rate" } },
             { new MenuItem() { Name = "Settings",  Destination = "Settings" } }
         };
 
         public ObservableCollection<MenuItem> MenuItems {
             get {
                 return menuItems;
+            }
+            set {
+                menuItems = value;
+                NotifyPropertyChanged("MenuItems");
             }
         }
 

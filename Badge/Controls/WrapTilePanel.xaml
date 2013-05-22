@@ -38,7 +38,7 @@
     </UserControl.Resources>
 
     <!-- set its ItemContainerStyle which is the style for each ListBoxItem -->
-    <ListBox ItemContainerStyle="{StaticResource TileListBoxItemStyle}" ItemsSource="{Binding MenuItems}" SelectionChanged="MenuItemSelectionChanged">
+    <ListBox x:Name="MenuTileList" ItemContainerStyle="{StaticResource TileListBoxItemStyle}" ItemsSource="{Binding MenuItems}" SelectionChanged="MenuItemSelectionChanged">
         <!-- set its ItemsPanel to be a WrapPanel -->
         <ListBox.ItemsPanel>
             <ItemsPanelTemplate>

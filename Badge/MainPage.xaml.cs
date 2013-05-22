@@ -43,8 +43,9 @@ namespace Badge
             BadgeDataService.SetNavigationService(this.NavigationService);
             BadgeDataService.LoadLogData();
 
-            // LogList.ItemsSource = BadgeState.Current.ReportLogs;
-            // ReportList.ItemsSource = BadgeState.Current.Entries;
+            this.DataContext = BadgeState.Current;
+            TileMenu.DataContext = BadgeState.Current;
+
         }
 
     }

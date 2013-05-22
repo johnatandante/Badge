@@ -28,7 +28,8 @@
 
             <!--Panorama item one-->
             <controls:PanoramaItem Header="Trace" Width="Auto">
-                <ccontrols:WrapTilePanel ItemsSource="{Binding MenuItems}" />
+                <!--ccontrols:WrapTilePanel  /-->
+                <ccontrols:WrapTilePanel x:Name="TileMenu"/>
             </controls:PanoramaItem>
 
             <!--Panorama item two-->

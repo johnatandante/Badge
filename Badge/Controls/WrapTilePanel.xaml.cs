@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Net;
 using System.Windows;
@@ -15,11 +17,6 @@ namespace Badge.Controls {
             InitializeComponent();
         }
 
-        public List<object> ItemsSource {
-            get;
-            set;
-        }
-
         private void MenuItemSelectionChanged(object sender, SelectionChangedEventArgs e) {
             if (!(sender is ListBox))
                 return;
@@ -29,7 +26,7 @@ namespace Badge.Controls {
                 return;
             var item = listBoxControl.SelectedItem as Model.MenuItem;
 
-            BadgeDataService.GetNavigationService().Navigate(new Uri(item.Destination + ".xaml", UriKind.RelativeOrAbsolute));
+            BadgeDataService.GetNavigationService().Navigate(new Uri(string.Format("/{0}.xaml", item.Destination), UriKind.RelativeOrAbsolute));
 
         }
 
