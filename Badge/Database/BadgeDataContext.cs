@@ -11,7 +11,7 @@ namespace Badge.Database
         public BadgeDataContext(string connectionString)
             : base(connectionString)
         {
-
+            
         }
 
         public Table<LogEntry> Entries;

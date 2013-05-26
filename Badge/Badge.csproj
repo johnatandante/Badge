@@ -60,6 +60,9 @@
     <Reference Include="system" />
     <Reference Include="System.Core" />
     <Reference Include="System.Net" />
+    <Reference Include="System.Windows.Controls.DataVisualization.Toolkit">
+      <HintPath>..\packages\System.Windows.Controls.DataVisualization.Toolkit\System.Windows.Controls.DataVisualization.Toolkit.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml" />
     <Reference Include="mscorlib.extensions" />
   </ItemGroup>
@@ -67,10 +70,11 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Context\TraceState.cs" />
     <Compile Include="Controller\BadgeDataService.cs" />
     <Compile Include="Controller\LogEntryDataService.cs" />
+    <Compile Include="Controller\MenuItemDataService.cs" />
     <Compile Include="Controller\ReportLogDataService.cs" />
+    <Compile Include="Controller\TraceState.cs" />
     <Compile Include="Controls\MailIcon.xaml.cs">
       <DependentUpon>MailIcon.xaml</DependentUpon>
     </Compile>

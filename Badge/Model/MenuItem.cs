@@ -12,5 +12,7 @@ namespace Badge.Model {
         public string Info { get; set; }
         public string ImagePath { get; set; }
 
+        public Action CallBackAction { get; set; }
+
     }
 }

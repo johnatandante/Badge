@@ -9,39 +9,59 @@ namespace Badge.Controller {
     public class LogEntryDataService {
 
         public static List<LogEntry> ReadAll() {
-            var list = default(List<LogEntry>);
-
             using (BadgeDataContext db = new BadgeDataContext(BadgeDataContext.ConnectionString)) {
-                list = db.Entries.ToList();
-
+                return db.Entries.ToList();
             }
-
-            return list;
         }
 
         public static LogEntry Read(decimal id) {
-            var item = default(LogEntry);
-
             using (BadgeDataContext db = new BadgeDataContext(BadgeDataContext.ConnectionString)) {
-                item = db.Entries.FirstOrDefault(entry => entry.Id == id);
+                return db.Entries.FirstOrDefault(entry => entry.Id == id);
             }
-
-            return item;
         }
 
         public static EntryType GetLastType() {
             var last = default(LogEntry);
-
             using (BadgeDataContext db = new BadgeDataContext(BadgeDataContext.ConnectionString)) {
-                last = db.Entries.Last();
+                last = (from entry in db.Entries
+                                   orderby entry.Time descending
+                                   select entry).FirstOrDefault();
 
             }
 
-            if (last == null)
-                return EntryType.Out;
-
-            return last.EntryTypeEnum;
+            return last != null ? last.EntryTypeEnum : EntryType.Out;
         }
+
+        public static void Log(LogEntry[] logEntry) {
+            using (BadgeDataContext db = new BadgeDataContext(BadgeDataContext.ConnectionString)) {
+                foreach (var entry in logEntry) {
+                    db.Entries.InsertOnSubmit(entry);
+                }
+                db.SubmitChanges();
+
+            }
+        }
+
+        public static LogEntry LogNew() {
+            var count = CountEntries();
+            LogEntry entry = new LogEntry {
+                Id = count + 1,
+                EntryTypeEnum = LogEntryDataService.GetLastType() == EntryType.In ? EntryType.Out : EntryType.In,
+                Time = DateTime.Now,
+            };
+
+            Log(new LogEntry[] { entry });
+
+            return entry;
+
+        }
+
+        private static int CountEntries() {
+            using (BadgeDataContext db = new BadgeDataContext(BadgeDataContext.ConnectionString)) {
+                return db.Entries.Count();
+            }
+        }
+
     }
 
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Windows;
+using System.Windows.Controls;
 using Badge.Context;
 using Badge.Controller;
 using Badge.Database;
@@ -19,23 +20,10 @@ namespace Badge
         }
 
         private void LogEntryButton_Tap(object sender, Microsoft.Phone.Controls.GestureEventArgs e) {
-            
-            using (BadgeDataContext db = new BadgeDataContext(BadgeDataContext.ConnectionString)) {
-                LogEntry entry = new LogEntry {
-                    Id = db.Entries.Count() + 1,
-                    EntryTypeEnum = LogEntryDataService.GetLastType() == EntryType.In ? EntryType.Out : EntryType.In,
-                    Time = DateTime.Now,
-                };
+            var entry = LogEntryDataService.LogNew();
 
-                db.Entries.InsertOnSubmit(entry);
-                BadgeState.Current.Entries.Add(entry);
-
-                db.SubmitChanges();
-
-                MessageBox.Show(string.Format("Event {0} logged at {1}", entry.EntryTypeEnum, entry.Time.ToString()), "Info", MessageBoxButton.OK);
-            }
-
-            
+            MessageBox.Show(string.Format("Event {0} logged at {1}", entry.EntryTypeEnum, entry.Time.ToString()), "Info", MessageBoxButton.OK);
+            BadgeState.Current.Entries.Add(entry);
 
         }
 
@@ -46,6 +34,14 @@ namespace Badge
             this.DataContext = BadgeState.Current;
             TileMenu.DataContext = BadgeState.Current;
 
+        }
+
+        private void ReportListSelectionChanged(object sender, SelectionChangedEventArgs e) {
+            if (e.AddedItems.Count == 0)
+                return;
+
+            var item = e.AddedItems[0] as Model.LogEntry;
+            BadgeDataService.GetNavigationService().Navigate(new Uri(string.Format("/Trace.xaml?id={0}", item.Id), UriKind.RelativeOrAbsolute));
         }
 
     }

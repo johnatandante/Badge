@@ -3,12 +3,13 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
     mc:Ignorable="d"
     d:DataContext="{d:DesignData /SampleData/MenuItemViewModelSampleData.xaml}"
     d:DesignHeight="240" d:DesignWidth="240"
              d:DesignBackground="DarkBlue">
-    <Grid >
-        <Image Source="{Binding ImagePath}" Stretch="UniformToFill" />
+    <Grid x:Name="MainGrid" toolkit:TiltEffect.IsTiltEnabled="True" >
+        <Image Source="{Binding ImagePath}" Stretch="UniformToFill"/>
         <Grid>
             <TextBlock Text="{Binding Name}" Margin="4,0,0,8" FontSize="42" HorizontalAlignment="Left" VerticalAlignment="Top" />
             <TextBlock Text="{Binding Info}" Margin="8,0,0,4" VerticalAlignment="Bottom" HorizontalAlignment="Center" FontSize="24" />

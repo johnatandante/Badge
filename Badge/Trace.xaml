@@ -36,12 +36,12 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <StackPanel Grid.Column="0" Grid.Row="0">
-                <toolkit:AutoCompleteBox Text="aaa" />
-                <toolkit:PhoneTextBox Text="{Binding EntryTypeEnum}" />
-                <toolkit:DatePicker Value="{Binding Time}" />
-                <toolkit:TimePicker Value="{Binding Time}" />
-                <toolkit:ListPicker ItemsSource="{Binding EntryTypes}"/>
-                
+                <TextBlock Text="Event type" />
+                <toolkit:ListPicker x:Name="EntryTypeListBox" ItemsSource="{Binding EntryTypes}" SelectedItem="{Binding LogType}"/>
+                <TextBlock Text="Date" />
+                <toolkit:DatePicker Value="{Binding TimeText}" />
+                <TextBlock Text="Time" />
+                <toolkit:TimePicker Value="{Binding TimeText}" />
             </StackPanel>
         </Grid>
     </Grid>

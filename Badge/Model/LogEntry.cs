@@ -31,6 +31,14 @@ namespace Badge.Model
             }
         }
 
+        internal static LogEntry NewLogIn() {
+            return new LogEntry() { EntryTypeEnum = Model.EntryType.In };
+        }
+
+        internal static LogEntry NewLogOut() {
+            return new LogEntry() { EntryTypeEnum = Model.EntryType.Out };
+        }
+
     }
 }
 

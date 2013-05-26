@@ -13,7 +13,7 @@ namespace Badge.Model {
 
         public string DateLogString {
             get {
-                return DateLog.ToShortDateString();
+                return DateLog == DateTime.MinValue ? string.Empty : DateLog.ToShortDateString();
             }
             set {
                 DateLog = Convert.ToDateTime(value);
@@ -31,7 +31,7 @@ namespace Badge.Model {
 
         public string TimeIn {
             get {
-                return LogIn.Time.ToShortTimeString();
+                return LogIn.Time == DateTime.MinValue ? string.Empty : LogIn.Time.ToShortTimeString();
             }
             set {
                 LogIn.Time = Convert.ToDateTime(value);
@@ -49,23 +49,20 @@ namespace Badge.Model {
 
         public string TimeOut {
             get {
-                return LogOut.Time.ToShortTimeString();
+                return LogOut.Time == DateTime.MinValue ? string.Empty : LogOut.Time.ToShortTimeString();
             }
             set {
                 LogOut.Time = Convert.ToDateTime(value);
             }
         }
 
-        public ReportLog() {
-            LogIn = new LogEntry() { EntryTypeEnum = Model.EntryType.In };
-            LogOut = new LogEntry() { EntryTypeEnum = Model.EntryType.Out };
+        public ReportLog() : this(null, null) {
 
-            DateLog = LogIn.Time.Date;
         }
 
         public ReportLog(LogEntry logIn, LogEntry logOut) {
-            LogIn = logIn;
-            LogOut = logOut;
+            LogIn = logIn ?? LogEntry.NewLogIn();
+            LogOut = logOut ?? LogEntry.NewLogOut();
 
             DateLog = LogIn.Time.Date;
 

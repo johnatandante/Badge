@@ -8,6 +8,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Navigation;
 using Badge.Controller;
+using Badge.UiControls.ViewItem;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 
@@ -17,17 +18,17 @@ namespace Badge.Controls {
             InitializeComponent();
         }
 
-        private void MenuItemSelectionChanged(object sender, SelectionChangedEventArgs e) {
-            if (!(sender is ListBox))
+        private void MenuTileTap(object sender, System.Windows.Input.GestureEventArgs e) {
+            var itemView = sender as MenuTile;
+
+            if (itemView.DataContext == null)
                 return;
-            var listBoxControl = sender as ListBox;
+            var item = itemView.DataContext as Model.MenuItem;
 
-            if (listBoxControl.SelectedItem == null)
-                return;
-            var item = listBoxControl.SelectedItem as Model.MenuItem;
-
-            BadgeDataService.GetNavigationService().Navigate(new Uri(string.Format("/{0}.xaml", item.Destination), UriKind.RelativeOrAbsolute));
-
+            if (item.CallBackAction != null)
+                item.CallBackAction();
+            else
+                BadgeDataService.GetNavigationService().Navigate(new Uri(string.Format("/{0}.xaml", item.Destination), UriKind.RelativeOrAbsolute));
         }
 
     }
