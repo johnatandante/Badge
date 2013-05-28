@@ -39,17 +39,17 @@
                 <TextBlock Text="Event type" />
                 <toolkit:ListPicker x:Name="EntryTypeListBox" ItemsSource="{Binding EntryTypes}" SelectedItem="{Binding LogType}"/>
                 <TextBlock Text="Date" />
-                <toolkit:DatePicker Value="{Binding TimeText}" />
+                <toolkit:DatePicker x:Name="DatePickerControl" Value="{Binding TimeText}" />
                 <TextBlock Text="Time" />
-                <toolkit:TimePicker Value="{Binding TimeText}" />
+                <toolkit:TimePicker x:Name="TimePickerControl" Value="{Binding TimeText}" />
             </StackPanel>
         </Grid>
     </Grid>
 
     <phone:PhoneApplicationPage.ApplicationBar>
-        <shell:ApplicationBar IsVisible="True" IsMenuEnabled="True">
-            <shell:ApplicationBarIconButton IconUri="/Toolkit.Content/ApplicationBar.Check.png" Text="Ok"/>
-            <shell:ApplicationBarIconButton IconUri="/Toolkit.Content/ApplicationBar.Cancel.png" Text="Undo"/>
+        <shell:ApplicationBar IsVisible="True" IsMenuEnabled="True" >
+            <shell:ApplicationBarIconButton IconUri="/Toolkit.Content/ApplicationBar.Check.png" Text="Ok" Click="InsertLogIconButtonClick"/>
+            <shell:ApplicationBarIconButton IconUri="/Toolkit.Content/ApplicationBar.Cancel.png" Text="Undo" Click="CancelIconButtonClick"/>
             <!--shell:ApplicationBar.MenuItems>
                 <shell:ApplicationBarMenuItem Text="MenuItem 1"/>
                 <shell:ApplicationBarMenuItem Text="MenuItem 2"/>

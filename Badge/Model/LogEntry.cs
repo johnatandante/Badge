@@ -10,8 +10,8 @@ namespace Badge.Model
     [Table]
     public class LogEntry {
 
-        [Column(IsPrimaryKey = true, CanBeNull = false)]
-        public decimal Id { get; set; }
+        [Column(IsPrimaryKey = true, CanBeNull = false, IsDbGenerated=true)]
+        public uint Id { get; set; }
 
         [Column]
         public DateTime Time { get; set; }
@@ -39,6 +39,9 @@ namespace Badge.Model
             return new LogEntry() { EntryTypeEnum = Model.EntryType.Out };
         }
 
+        public LogEntry() {
+            Time = DateTime.Now;
+        }
     }
 }
 

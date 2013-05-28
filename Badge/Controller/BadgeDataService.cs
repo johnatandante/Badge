@@ -11,7 +11,7 @@ namespace Badge.Controller {
             ReportLogDataService.LoadEntries();
             ReportLogDataService.LoadReportLogs();
             MenuItemDataService.LoadMenu();
-
+            GraphLogDataService.LoadGraphData();
         }
 
         public static void SetNavigationService(NavigationService navi) {

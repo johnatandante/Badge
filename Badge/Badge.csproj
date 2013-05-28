@@ -71,6 +71,7 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controller\BadgeDataService.cs" />
+    <Compile Include="Controller\GraphLogDataService.cs" />
     <Compile Include="Controller\LogEntryDataService.cs" />
     <Compile Include="Controller\MenuItemDataService.cs" />
     <Compile Include="Controller\ReportLogDataService.cs" />
@@ -82,6 +83,7 @@
       <DependentUpon>WrapTilePanel.xaml</DependentUpon>
     </Compile>
     <Compile Include="Database\BadgeDataContext.cs" />
+    <Compile Include="Model\ChartItemDataModel.cs" />
     <Compile Include="Model\EntryType.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>

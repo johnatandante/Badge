@@ -45,7 +45,7 @@ namespace Badge.Controller {
         public static LogEntry LogNew() {
             var count = CountEntries();
             LogEntry entry = new LogEntry {
-                Id = count + 1,
+                // Id = count + 1,
                 EntryTypeEnum = LogEntryDataService.GetLastType() == EntryType.In ? EntryType.Out : EntryType.In,
                 Time = DateTime.Now,
             };

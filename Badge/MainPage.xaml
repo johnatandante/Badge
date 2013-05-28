@@ -8,9 +8,10 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
-    xmlns:charting="clr-namespace:System.Windows.Controls.DataVisualization.Charting;assembly=System.Windows.Controls.DataVisualization.Toolkit"
     xmlns:itemview="clr-namespace:Badge.UiControls.ViewItem"
     xmlns:ccontrols="clr-namespace:Badge.Controls"
+    xmlns:datavis="clr-namespace:System.Windows.Controls.DataVisualization;assembly=System.Windows.Controls.DataVisualization.Toolkit"
+    xmlns:charting="clr-namespace:System.Windows.Controls.DataVisualization.Charting;assembly=System.Windows.Controls.DataVisualization.Toolkit"
     mc:Ignorable="d" 
     d:DataContext="{d:DesignData /SampleData/BadgeStateViewModelSampleData.xaml}"
     d:DesignWidth="480" d:DesignHeight="768"
@@ -19,6 +20,17 @@
     Foreground="{StaticResource PhoneForegroundBrush}"
     SupportedOrientations="Portrait" Orientation="Portrait"
     shell:SystemTray.IsVisible="True" Loaded="PhoneApplicationPage_Loaded">
+
+    <phone:PhoneApplicationPage.Resources>
+        <Style x:Key="legendStyle" TargetType="datavis:Legend">
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="BorderBrush" Value="Transparent" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+        </Style>
+        <Style x:Key="plotAreaStyle" TargetType="Grid">
+            <Setter Property="Background" Value="Transparent" />
+        </Style>
+    </phone:PhoneApplicationPage.Resources>
 
     <!--LayoutRoot is the root grid where all page content is placed-->
     <!--LayoutRoot contains the root grid where all other page content is placed-->
@@ -32,9 +44,11 @@
             </controls:PanoramaItem>
 
             <!--Panorama item one-->
-            <controls:PanoramaItem x:Name="Graph" Width="Auto">
-                <charting:Chart>
-                    <charting:BubbleSeries Title="Test items" ItemsSource="{Binding Entries}" DependentValuePath="ItemValue" IndependentValuePath="Title" />
+            <controls:PanoramaItem x:Name="Graph" Width="840" Header="Work Log Graph" Orientation="Horizontal">
+                <charting:Chart x:Name="chartIn" PlotAreaStyle="{StaticResource plotAreaStyle}"
+                        LegendStyle="{StaticResource legendStyle}">
+                    <!--charting:LineSeries ItemsSource="{Binding ChartDataIn}" DependentValuePath="ItemValue" IndependentValuePath="Day" /-->
+                    <charting:LineSeries ItemsSource="{Binding ChartDataOut}" DependentValuePath="ItemValue" IndependentValuePath="Day" Foreground="AliceBlue" />
                 </charting:Chart>
             </controls:PanoramaItem>
             

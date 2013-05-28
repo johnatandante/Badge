@@ -29,7 +29,7 @@ namespace Badge
 
         private void PhoneApplicationPage_Loaded(object sender, RoutedEventArgs e) {
             BadgeDataService.SetNavigationService(this.NavigationService);
-            BadgeDataService.LoadLogData();
+            BadgeDataService.LoadLogData();            
 
             this.DataContext = BadgeState.Current;
             TileMenu.DataContext = BadgeState.Current;

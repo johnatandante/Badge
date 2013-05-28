@@ -7,6 +7,7 @@ using System.Windows.Controls;
 using System.Windows.Navigation;
 using Badge.Context;
 using Badge.Controller;
+using Badge.Model;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 
@@ -30,7 +31,6 @@ namespace Badge {
             //}
 
             this.DataContext = context;
-
             base.OnNavigatedTo(e);
         }
 
@@ -49,6 +49,30 @@ namespace Badge {
         private void PageLoaded(object sender, RoutedEventArgs e) {
             this.DataContext = TraceState.GetNew();
             
+        }
+
+        private void InsertLogIconButtonClick(object sender, EventArgs e) {
+            var entry = (DataContext as TraceState).LogEntryItem;
+            entry.EntryTypeEnum = (EntryType)EntryTypeListBox.SelectedItem;
+            if (!DatePickerControl.Value.HasValue || !TimePickerControl.Value.HasValue)
+                return;
+
+            entry.Time = DatePickerControl.Value.Value.Date;
+            entry.Time = entry.Time.AddMinutes(TimePickerControl.Value.Value.Minute);
+            entry.Time = entry.Time.AddHours(TimePickerControl.Value.Value.Hour);
+
+            LogEntryDataService.Log(new LogEntry[] {entry });
+            MessageBox.Show(string.Format("Event {0} logged at {1}", entry.EntryTypeEnum, entry.Time.ToString()), "Info", MessageBoxButton.OK);
+            BadgeDataService.GetNavigationService().GoBack();
+
+        }
+
+        private void CancelIconButtonClick(object sender, EventArgs e) {
+            BadgeDataService.GetNavigationService().GoBack();
+
+        }
+
+        private void EntryTypeListBox_SelectionChanged_1(object sender, SelectionChangedEventArgs e) {
 
         }
 

@@ -18,8 +18,29 @@ namespace Badge.Context {
             }
         }
 
-        ObservableCollection<MenuItem> menuItems = new ObservableCollection<MenuItem>();
+        ObservableCollection<ChartItemDataModel> chartDataIn = new ObservableCollection<ChartItemDataModel>();
+        public ObservableCollection<ChartItemDataModel> ChartDataIn {
+            get {
+                return chartDataIn;
+            }
+            set {
+                chartDataIn = value;
+                NotifyPropertyChanged("ChartDataIn");
+            }
+        }
 
+        ObservableCollection<ChartItemDataModel> chartDataOut = new ObservableCollection<ChartItemDataModel>();
+        public ObservableCollection<ChartItemDataModel> ChartDataOut {
+            get {
+                return chartDataOut;
+            }
+            set {
+                chartDataOut = value;
+                NotifyPropertyChanged("ChartDataOut");
+            }
+        }
+
+        ObservableCollection<MenuItem> menuItems = new ObservableCollection<MenuItem>();
         public ObservableCollection<MenuItem> MenuItems {
             get {
                 return menuItems;

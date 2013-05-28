@@ -7,9 +7,10 @@ using Proattiva.Utils.Phone;
 namespace Badge.Model {
     public class ReportLog {
 
-        public DateTime DateLog { get; set; }
-        protected LogEntry LogIn { get; set; }
-        protected LogEntry LogOut { get; set; }
+        public DateTime DateLog = DateTime.Now;
+
+        protected LogEntry LogIn = new LogEntry();
+        protected LogEntry LogOut = new LogEntry();
 
         public string DateLogString {
             get {
@@ -31,7 +32,7 @@ namespace Badge.Model {
 
         public string TimeIn {
             get {
-                return LogIn.Time == DateTime.MinValue ? string.Empty : LogIn.Time.ToShortTimeString();
+                return LogIn.Time.Ticks == DateTime.MinValue.Ticks ? string.Empty : LogIn.Time.ToShortTimeString();
             }
             set {
                 LogIn.Time = Convert.ToDateTime(value);
@@ -49,14 +50,14 @@ namespace Badge.Model {
 
         public string TimeOut {
             get {
-                return LogOut.Time == DateTime.MinValue ? string.Empty : LogOut.Time.ToShortTimeString();
+                return LogOut.Time.Ticks == DateTime.MinValue.Ticks ? string.Empty : LogOut.Time.ToShortTimeString();
             }
             set {
                 LogOut.Time = Convert.ToDateTime(value);
             }
         }
 
-        public ReportLog() : this(null, null) {
+        public ReportLog() {
 
         }
 
@@ -64,7 +65,7 @@ namespace Badge.Model {
             LogIn = logIn ?? LogEntry.NewLogIn();
             LogOut = logOut ?? LogEntry.NewLogOut();
 
-            DateLog = LogIn.Time.Date;
+            DateLog = logIn.Time.Date;
 
         }
 
