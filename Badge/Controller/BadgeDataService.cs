@@ -8,9 +8,8 @@ namespace Badge.Controller {
     public class BadgeDataService {
 
         public static void LoadLogData() {
-            ReportLogDataService.LoadEntries();
-            ReportLogDataService.LoadReportLogs();
             MenuItemDataService.LoadMenu();
+            GraphLogDataService.LoadSupportedPeriods();
             GraphLogDataService.LoadGraphData();
         }
 

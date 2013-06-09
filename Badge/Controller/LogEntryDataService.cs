@@ -14,6 +14,15 @@ namespace Badge.Controller {
             }
         }
 
+        public static List<LogEntry> ReadAll(SupportedPeriod period) {
+            using (BadgeDataContext db = new BadgeDataContext(BadgeDataContext.ConnectionString)) {
+                return (from entry in db.Entries
+                        where entry.Time >= period.From && entry.Time <= period.To
+                            orderby entry.Time
+                            select entry).ToList();
+            }
+        }
+
         public static LogEntry Read(decimal id) {
             using (BadgeDataContext db = new BadgeDataContext(BadgeDataContext.ConnectionString)) {
                 return db.Entries.FirstOrDefault(entry => entry.Id == id);

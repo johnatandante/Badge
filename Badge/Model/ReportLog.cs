@@ -61,11 +61,20 @@ namespace Badge.Model {
 
         }
 
-        public ReportLog(LogEntry logIn, LogEntry logOut) {
+        public ReportLog(LogEntry logIn, LogEntry logOut = null) {
             LogIn = logIn ?? LogEntry.NewLogIn();
             LogOut = logOut ?? LogEntry.NewLogOut();
 
             DateLog = logIn.Time.Date;
+
+        }
+
+        public void CheckIn(LogEntry logIn) {
+            LogIn = logIn;
+        }
+
+        public void CheckOut(LogEntry logOut) {
+            LogOut = logOut;
 
         }
 

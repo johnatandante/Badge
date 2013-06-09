@@ -1,51 +1,73 @@
 ﻿<local:BadgeState
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"       
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="clr-namespace:Badge.Context"
-    xmlns:localModel="clr-namespace:Badge.Model">
+    xmlns:localModel="clr-namespace:Badge.Model"    
+    >
+    
+    <local:BadgeState.Period >
+        <localModel:SupportedPeriod Description="Last Week" />
+    </local:BadgeState.Period>
 
-    <local:BadgeState.Entries>        
-        <localModel:LogEntry EntryTypeEnum="In" Time="2:30" />
-        <localModel:LogEntry EntryTypeEnum="Out" Time="4:30" />
-        <localModel:LogEntry EntryTypeEnum="In" Time="12:30" />
-        <localModel:LogEntry EntryTypeEnum="Out" Time="14:30" />
-        <localModel:LogEntry EntryTypeEnum="In" Time="22:30" />
-        <localModel:LogEntry EntryTypeEnum="Out" Time="23:30" />
-    </local:BadgeState.Entries>
-
-    <local:BadgeState.ReportLogs>
-        <localModel:ReportLog DateLogString="01/1/2013" DescriptionIn="In" TimeIn="03:30" DescriptionOut="Out" TimeOut="04:50" />
-        <localModel:ReportLog DateLogString="02/1/2013" DescriptionIn="In" TimeIn="03:30" DescriptionOut="Out" TimeOut="04:50" />
-        <localModel:ReportLog DateLogString="03/1/2013" DescriptionIn="In" TimeIn="03:30" DescriptionOut="Out" TimeOut="04:50" />
-        <localModel:ReportLog DateLogString="04/1/2013" DescriptionIn="In" TimeIn="03:30" DescriptionOut="Out" TimeOut="04:50" />
-        <localModel:ReportLog DateLogString="02/3/2013" DescriptionIn="In" TimeIn="03:30" DescriptionOut="Out" TimeOut="04:50" />
-        <localModel:ReportLog DateLogString="07/3/2013" DescriptionIn="In" TimeIn="03:30" DescriptionOut="Out" TimeOut="04:50" />
-    </local:BadgeState.ReportLogs>
+    <local:BadgeState.Periods>
+        <localModel:SupportedPeriod Description="Last Week" />
+        <localModel:SupportedPeriod Description="Last Month"/>
+        <localModel:SupportedPeriod Description="Last 2 Months"/>
+        <localModel:SupportedPeriod Description="Last 6 Months"/>
+        <localModel:SupportedPeriod Description="Last Year"/>
+    </local:BadgeState.Periods>
 
     <local:BadgeState.MenuItems>
         <localModel:MenuItem Destination="Trace" ImagePath="/Toolkit.Content/ApplicationBar.Select.png" Info="2" Name="Trace" />
-        <localModel:MenuItem Destination="Share" ImagePath="/Toolkit.Content/ApplicationBar.Share.png" Info="2" Name="Share" />
-        <localModel:MenuItem Destination="Search" ImagePath="/Toolkit.Content/ApplicationBar.Search.png" Info="2" Name="Search" />
-        <localModel:MenuItem Destination="Rate" ImagePath="/Toolkit.Content/ApplicationBar.Check.png" Info="2" Name="Rate" />
+        <localModel:MenuItem Destination="Share" ImagePath="/Toolkit.Content/ApplicationBar.Share.png" Info="5" Name="Share" />
+        <localModel:MenuItem Destination="Search" ImagePath="/Toolkit.Content/ApplicationBar.Search.png" Info="12" Name="Search" />
+        <localModel:MenuItem Destination="Rate" ImagePath="/Toolkit.Content/ApplicationBar.Check.png" Info="" Name="Rate" />
         <localModel:MenuItem Destination="Settings" ImagePath="" Info="2" Name="Settings" />
+        <localModel:MenuItem Destination="About" ImagePath="" Name="About" />
     </local:BadgeState.MenuItems>
 
     <local:BadgeState.ChartDataIn>
-        <localModel:ChartItemDataModel Day="2013/07/22" ItemValue="08:00" />
-        <localModel:ChartItemDataModel Day="2013/07/23" ItemValue="08:12" />
-        <localModel:ChartItemDataModel Day="2013/07/24" ItemValue="07:15" />
-        <localModel:ChartItemDataModel Day="2013/07/27" ItemValue="07:15" />
-        <localModel:ChartItemDataModel Day="2013/07/28" ItemValue="08:15" />
-        <localModel:ChartItemDataModel Day="2013/07/29" ItemValue="07:10" />
+        <localModel:ChartItemDataModel ItemLabel="2" ItemValue="08:00" />
+        <localModel:ChartItemDataModel ItemLabel="3" ItemValue="08:00" />
+        <localModel:ChartItemDataModel ItemLabel="4" ItemValue="08:00" />
+        <localModel:ChartItemDataModel ItemLabel="5" ItemValue="08:00" />
+        <localModel:ChartItemDataModel ItemLabel="6" ItemValue="08:00" />
+        <localModel:ChartItemDataModel ItemLabel="7" ItemValue="08:00" />
+        <localModel:ChartItemDataModel ItemLabel="12" ItemValue="08:00" />
+        <localModel:ChartItemDataModel ItemLabel="13" ItemValue="08:00" />
+        <localModel:ChartItemDataModel ItemLabel="14" ItemValue="08:00" />
+        <localModel:ChartItemDataModel ItemLabel="15" ItemValue="08:00" />
+        <localModel:ChartItemDataModel ItemLabel="16" ItemValue="08:00" />
+        <localModel:ChartItemDataModel ItemLabel="17" ItemValue="08:00" />
+        <localModel:ChartItemDataModel ItemLabel="22" ItemValue="08:00" />
+        <localModel:ChartItemDataModel ItemLabel="23" ItemValue="08:12" />
+        <localModel:ChartItemDataModel ItemLabel="24" ItemValue="07:15" />
+        <localModel:ChartItemDataModel ItemLabel="27" ItemValue="07:15" />
+        <localModel:ChartItemDataModel ItemLabel="28" ItemValue="08:15" />
+        <localModel:ChartItemDataModel ItemLabel="29" ItemValue="07:10" />
+        <localModel:ChartItemDataModel ItemLabel="1" ItemValue="08:00" />
     </local:BadgeState.ChartDataIn>
 
     <local:BadgeState.ChartDataOut>
-        <localModel:ChartItemDataModel Day="2013/07/22" ItemValue="18:00" />
-        <localModel:ChartItemDataModel Day="2013/07/23" ItemValue="18:12" />
-        <localModel:ChartItemDataModel Day="2013/07/24" ItemValue="17:15" />
-        <localModel:ChartItemDataModel Day="2013/07/27" ItemValue="17:15" />
-        <localModel:ChartItemDataModel Day="2013/07/28" ItemValue="18:15" />
-        <localModel:ChartItemDataModel Day="2013/07/29" ItemValue="17:10" />
+        <localModel:ChartItemDataModel ItemLabel="1" ItemValue="18:00" />
+        <localModel:ChartItemDataModel ItemLabel="2" ItemValue="18:00" />
+        <localModel:ChartItemDataModel ItemLabel="3" ItemValue="18:00" />
+        <localModel:ChartItemDataModel ItemLabel="4" ItemValue="18:00" />
+        <localModel:ChartItemDataModel ItemLabel="5" ItemValue="18:00" />
+        <localModel:ChartItemDataModel ItemLabel="6" ItemValue="18:00" />
+        <localModel:ChartItemDataModel ItemLabel="7" ItemValue="18:00" />
+        <localModel:ChartItemDataModel ItemLabel="12" ItemValue="18:00" />
+        <localModel:ChartItemDataModel ItemLabel="13" ItemValue="18:00" />
+        <localModel:ChartItemDataModel ItemLabel="14" ItemValue="18:00" />
+        <localModel:ChartItemDataModel ItemLabel="15" ItemValue="18:00" />
+        <localModel:ChartItemDataModel ItemLabel="16" ItemValue="18:00" />
+        <localModel:ChartItemDataModel ItemLabel="17" ItemValue="18:00" />
+        <localModel:ChartItemDataModel ItemLabel="22" ItemValue="18:00" />
+        <localModel:ChartItemDataModel ItemLabel="23" ItemValue="18:12" />
+        <localModel:ChartItemDataModel ItemLabel="24" ItemValue="17:15" />
+        <localModel:ChartItemDataModel ItemLabel="27" ItemValue="17:15" />
+        <localModel:ChartItemDataModel ItemLabel="28" ItemValue="18:15" />
+        <localModel:ChartItemDataModel ItemLabel="29" ItemValue="17:10" />
     </local:BadgeState.ChartDataOut>
-
+    
 </local:BadgeState>

@@ -9,8 +9,16 @@ using Badge.Model;
 namespace Badge.Controller {
     public class GraphLogDataService {
 
-        private static IEnumerable<ChartItemDataModel> GetGraphItemData(EntryType filterType) {
-            var reportLogs = ReportLogDataService.ReadAll();
+        static SupportedPeriod[] CustomPeriods = new SupportedPeriod[] { 
+            new SupportedPeriod() { Period= PeriodType.LastWeek },
+            new SupportedPeriod() { Period= PeriodType.LastMonth },
+            new SupportedPeriod() { Period= PeriodType.Last2Months },
+            new SupportedPeriod() { Period= PeriodType.Last6Months },
+            new SupportedPeriod() { Period= PeriodType.LastYear },
+            new SupportedPeriod() { Period= PeriodType.All },
+        };
+
+        private static IEnumerable<ChartItemDataModel> GetGraphItemData(IEnumerable<ReportLog> reportLogs, EntryType filterType, PeriodType period = PeriodType.All) {
             var itemData = new List<ChartItemDataModel>();
             foreach (var reportLog in reportLogs) {
                 if (reportLog.TimeIn == string.Empty ||
@@ -18,6 +26,7 @@ namespace Badge.Controller {
                     continue;
 
                 itemData.Add(new ChartItemDataModel(reportLog.DateLog,
+                                                    period,
                                                     filterType == EntryType.In ? reportLog.TimeIn 
                                                                                : reportLog.TimeOut)
                 );
@@ -26,11 +35,19 @@ namespace Badge.Controller {
             return itemData;
         }
 
+        public static void LoadGraphData(bool useCache = false) {
+            var period = BadgeState.Current.Period;
+            if(!useCache)
+                BadgeState.Current.ReportLogs = ReportLogDataService.ReadAll(period);
 
-        public static void LoadGraphData() {
-            BadgeState.Current.ChartDataIn = new ObservableCollection<ChartItemDataModel>(GraphLogDataService.GetGraphItemData(EntryType.In));
-            BadgeState.Current.ChartDataOut = new ObservableCollection<ChartItemDataModel>(GraphLogDataService.GetGraphItemData(EntryType.Out));
+            BadgeState.Current.ChartDataIn = new ObservableCollection<ChartItemDataModel>(GraphLogDataService.GetGraphItemData(BadgeState.Current.ReportLogs, EntryType.In, period.Period));
+            BadgeState.Current.ChartDataOut = new ObservableCollection<ChartItemDataModel>(GraphLogDataService.GetGraphItemData(BadgeState.Current.ReportLogs, EntryType.Out, period.Period));
 
         }
+
+        public static void LoadSupportedPeriods() {
+            BadgeState.Current.Periods = new ObservableCollection<SupportedPeriod>(CustomPeriods);            
+        }
+
     }
 }

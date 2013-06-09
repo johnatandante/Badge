@@ -1,0 +1,55 @@
+﻿<phone:PhoneApplicationPage
+    x:Class="Badge.Search"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:controls="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:itemview="clr-namespace:Badge.UiControls.ViewItem"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    mc:Ignorable="d"
+    d:DataContext="{d:DesignData /SampleData/SearchStateViewModelSampleData.xaml}"
+    shell:SystemTray.IsVisible="True">
+
+    <!--LayoutRoot is the root grid where all page content is placed-->
+    <Grid x:Name="LayoutRoot" Background="Transparent">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        
+        <controls:Pivot Title="Badge">
+            <!--Pivot item one-->
+            <controls:PivotItem Header="Work Log">
+                <Grid>
+                    <!--Panorama item two-->
+                        <ListBox x:Name="LogList" ItemsSource="{Binding ReportLogs}" Width="Auto" Height="Auto" Margin="6,12">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <itemview:LogItemViewWork />
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+                </Grid>
+            </controls:PivotItem>
+
+            <!--Pivot item two-->
+            <controls:PivotItem Header="Detailed Log">
+                <Grid>
+                    <ListBox x:Name="ReportList" ItemsSource="{Binding Entries}" Width="Auto" Margin="6,12" >
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <itemview:LogItemViewReport />
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </Grid>
+            </controls:PivotItem>
+        </controls:Pivot>        
+    </Grid>
+
+</phone:PhoneApplicationPage>

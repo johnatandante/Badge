@@ -1,0 +1,38 @@
+﻿<local:SearchState
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:Badge.Context"
+    xmlns:localModel="clr-namespace:Badge.Model"    
+    >
+    
+    <!--local:SearchState.Period >
+        <localModel:SupportedPeriod Description="Last Week" />
+    </local:SearchState.Period>
+
+    <local:SearchState.Periods>
+        <localModel:SupportedPeriod Description="Last Week" />
+        <localModel:SupportedPeriod Description="Last Month"/>
+        <localModel:SupportedPeriod Description="Last 2 Months"/>
+        <localModel:SupportedPeriod Description="Last 6 Months"/>
+        <localModel:SupportedPeriod Description="Last Year"/>
+    </local:SearchState.Periods-->
+    
+    <local:SearchState.Entries>        
+        <localModel:LogEntry EntryTypeEnum="In" Time="2:30" />
+        <localModel:LogEntry EntryTypeEnum="Out" Time="4:30" />
+        <localModel:LogEntry EntryTypeEnum="In" Time="12:30" />
+        <localModel:LogEntry EntryTypeEnum="Out" Time="14:30" />
+        <localModel:LogEntry EntryTypeEnum="In" Time="22:30" />
+        <localModel:LogEntry EntryTypeEnum="Out" Time="23:30" />
+    </local:SearchState.Entries>
+
+    <local:SearchState.ReportLogs>
+        <localModel:ReportLog DateLogString="01/1/2013" DescriptionIn="In" TimeIn="03:30" DescriptionOut="Out" TimeOut="04:50" />
+        <localModel:ReportLog DateLogString="02/1/2013" DescriptionIn="In" TimeIn="03:30" DescriptionOut="Out" TimeOut="04:50" />
+        <localModel:ReportLog DateLogString="03/1/2013" DescriptionIn="In" TimeIn="03:30" DescriptionOut="Out" TimeOut="04:50" />
+        <localModel:ReportLog DateLogString="04/1/2013" DescriptionIn="In" TimeIn="03:30" DescriptionOut="Out" TimeOut="04:50" />
+        <localModel:ReportLog DateLogString="02/3/2013" DescriptionIn="In" TimeIn="03:30" DescriptionOut="Out" TimeOut="04:50" />
+        <localModel:ReportLog DateLogString="07/3/2013" DescriptionIn="In" TimeIn="03:30" DescriptionOut="Out" TimeOut="04:50" />
+    </local:SearchState.ReportLogs>
+    
+</local:SearchState>

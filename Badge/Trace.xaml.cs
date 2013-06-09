@@ -47,7 +47,7 @@ namespace Badge {
         }
 
         private void PageLoaded(object sender, RoutedEventArgs e) {
-            this.DataContext = TraceState.GetNew();
+            // this.DataContext = TraceState.GetNew();
             
         }
 
