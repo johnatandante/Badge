@@ -17,7 +17,7 @@ namespace Badge.Controller {
         public static List<LogEntry> ReadAll(SupportedPeriod period) {
             using (BadgeDataContext db = new BadgeDataContext(BadgeDataContext.ConnectionString)) {
                 return (from entry in db.Entries
-                        where entry.Time >= period.From && entry.Time <= period.To
+                        where entry.Time.Date >= period.From.Date && entry.Time.Date <= period.To.Date
                             orderby entry.Time
                             select entry).ToList();
             }

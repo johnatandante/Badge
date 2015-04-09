@@ -1,0 +1,17 @@
+﻿<local:BadgeState
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:Badge.Context"
+    xmlns:localModel="clr-namespace:Badge.Model"    
+    >
+
+    <local:BadgeState.Periods>
+        <localModel:SupportedPeriod Description="Last Fuck" />
+        <localModel:SupportedPeriod Description="Last Week" />
+        <localModel:SupportedPeriod Description="Last Month"/>
+        <localModel:SupportedPeriod Description="Last 2 Months"/>
+        <localModel:SupportedPeriod Description="Last 6 Months"/>
+        <localModel:SupportedPeriod Description="Last Year"/>
+    </local:BadgeState.Periods>
+
+</local:BadgeState>

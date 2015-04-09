@@ -5,7 +5,7 @@
     xmlns:localModel="clr-namespace:Badge.Model"    
     >
     
-    <!--local:SearchState.Period >
+    <local:SearchState.Period >
         <localModel:SupportedPeriod Description="Last Week" />
     </local:SearchState.Period>
 
@@ -15,7 +15,7 @@
         <localModel:SupportedPeriod Description="Last 2 Months"/>
         <localModel:SupportedPeriod Description="Last 6 Months"/>
         <localModel:SupportedPeriod Description="Last Year"/>
-    </local:SearchState.Periods-->
+    </local:SearchState.Periods>
     
     <local:SearchState.Entries>        
         <localModel:LogEntry EntryTypeEnum="In" Time="2:30" />

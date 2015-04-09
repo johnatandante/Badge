@@ -21,19 +21,18 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        
+
         <controls:Pivot Title="Badge">
             <!--Pivot item one-->
             <controls:PivotItem Header="Work Log">
                 <Grid>
-                    <!--Panorama item two-->
-                        <ListBox x:Name="LogList" ItemsSource="{Binding ReportLogs}" Width="Auto" Height="Auto" Margin="6,12">
-                            <ListBox.ItemTemplate>
-                                <DataTemplate>
-                                    <itemview:LogItemViewWork />
-                                </DataTemplate>
-                            </ListBox.ItemTemplate>
-                        </ListBox>
+                    <ListBox x:Name="LogList" ItemsSource="{Binding ReportLogs}" Width="Auto" Height="Auto" Margin="6,12">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <itemview:LogItemViewWork />
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
                 </Grid>
             </controls:PivotItem>
 
@@ -49,7 +48,7 @@
                     </ListBox>
                 </Grid>
             </controls:PivotItem>
-        </controls:Pivot>        
+        </controls:Pivot>
     </Grid>
 
 </phone:PhoneApplicationPage>

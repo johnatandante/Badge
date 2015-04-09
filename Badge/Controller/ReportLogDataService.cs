@@ -34,7 +34,7 @@ namespace Badge.Controller {
         }
 
         internal static void LoadEntries() {
-            SearchState.Current.Entries = new ObservableCollection<LogEntry>(LogEntryDataService.ReadAll(BadgeState.Current.Period));
+            SearchState.Current.Entries = new  ObservableCollection<LogEntry>(LogEntryDataService.ReadAll(BadgeState.Current.Period));
         }
 
         internal static void LoadReportLogs() {

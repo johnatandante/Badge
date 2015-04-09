@@ -6,7 +6,7 @@ using System.Windows.Navigation;
 using Badge.Context;
 
 namespace Badge.Controller {
-    public class BaseState {
+    public class SearchDataService {
 
         public static void LoadLogData() {
             ReportLogDataService.LoadEntries();

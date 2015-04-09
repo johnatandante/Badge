@@ -5,18 +5,6 @@
     xmlns:localModel="clr-namespace:Badge.Model"    
     >
     
-    <local:BadgeState.Period >
-        <localModel:SupportedPeriod Description="Last Week" />
-    </local:BadgeState.Period>
-
-    <local:BadgeState.Periods>
-        <localModel:SupportedPeriod Description="Last Week" />
-        <localModel:SupportedPeriod Description="Last Month"/>
-        <localModel:SupportedPeriod Description="Last 2 Months"/>
-        <localModel:SupportedPeriod Description="Last 6 Months"/>
-        <localModel:SupportedPeriod Description="Last Year"/>
-    </local:BadgeState.Periods>
-
     <local:BadgeState.MenuItems>
         <localModel:MenuItem Destination="Trace" ImagePath="/Toolkit.Content/ApplicationBar.Select.png" Info="2" Name="Trace" />
         <localModel:MenuItem Destination="Share" ImagePath="/Toolkit.Content/ApplicationBar.Share.png" Info="5" Name="Share" />

@@ -64,20 +64,7 @@
                         <charting:LineSeries x:Name="InLineSeries" Title="In" ItemsSource="{Binding ChartDataIn}" DependentValuePath="ItemValue" IndependentValuePath="ItemLabel" Foreground="Red" />
                         <charting:LineSeries x:Name="OutLineSeries" Title="Out" ItemsSource="{Binding ChartDataOut}" DependentValuePath="ItemValue" IndependentValuePath="ItemLabel" Foreground="AliceBlue" />
                     </charting:Chart>
-                    <toolkit:ListPicker ItemsSource="{Binding Periods}"  Header="Search Period" 
-                                        Width="Auto" VerticalAlignment="Stretch" Grid.Row="0" Grid.Column="0" Margin="6" 
-                                        SelectionChanged="OnPeriodChanged">
-                        <toolkit:ListPicker.ItemTemplate>
-                            <DataTemplate>
-                                <TextBlock Text="{Binding Description}" FontSize="18" />
-                            </DataTemplate>
-                        </toolkit:ListPicker.ItemTemplate>
-                        <toolkit:ListPicker.FullModeItemTemplate>
-                            <DataTemplate>
-                                <TextBlock Text="{Binding Description}" FontSize="36"  />
-                            </DataTemplate>
-                        </toolkit:ListPicker.FullModeItemTemplate>
-                    </toolkit:ListPicker>
+                    <ccontrols:PeriodListChooser />
                 </Grid>
             </controls:PanoramaItem>
             

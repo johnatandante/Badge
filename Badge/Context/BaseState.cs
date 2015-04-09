@@ -8,14 +8,18 @@ using Proattiva.Utils.Phone;
 namespace Badge.Context {
     public class BaseState : PropertyChangedBaseClass {
 
-        protected static BaseState istance;
+        protected static BaseState appStateIstance = null;
+
+        static BaseState() {
+            appStateIstance = new BaseState();    
+        }
 
         public static void SetNavigationService(NavigationService navi) {
-            istance.NavigationService = navi;
+            appStateIstance.NavigationService = navi;
         }
 
         public static NavigationService GetNavigationService() {
-            return istance.NavigationService;
+            return appStateIstance.NavigationService;
         }
 
         public NavigationService NavigationService { get; set; }

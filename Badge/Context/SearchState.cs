@@ -8,12 +8,36 @@ using Proattiva.Utils.Phone;
 namespace Badge.Context {
     public class SearchState : BaseState {
 
+        static SearchState istance = null;
+
         public static SearchState Current {
             get {
                 if (istance == null)
                     istance = new SearchState();
 
-                return istance as SearchState;
+                return istance;
+            }
+        }
+
+        private SupportedPeriod period = new SupportedPeriod() { Period = PeriodType.LastWeek };
+        public SupportedPeriod Period {
+            get {
+                return period;
+            }
+            set {
+                period = value;
+                NotifyPropertyChanged("Period");
+            }
+        }
+
+        ObservableCollection<SupportedPeriod> periods = new ObservableCollection<SupportedPeriod>();
+        public ObservableCollection<SupportedPeriod> Periods {
+            get {
+                return periods;
+            }
+            set {
+                periods = value;
+                NotifyPropertyChanged("Periods");
             }
         }
 

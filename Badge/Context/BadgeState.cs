@@ -8,12 +8,14 @@ using Proattiva.Utils.Phone;
 namespace Badge.Context {
     public class BadgeState : BaseState {
 
+        static BadgeState istance = null;
+
         public static BadgeState Current {
             get {
                 if (istance == null)
                     istance = new BadgeState();
 
-                return istance as BadgeState;
+                return istance;
             }
         }
 
